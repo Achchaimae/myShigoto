@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\PostResource;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {  
@@ -52,3 +53,5 @@ class PostController extends Controller
    
 
 }
+
+//http://127.0.0.1:8000/api/V1/posts my api url
