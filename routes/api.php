@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\ApplyController;
 
 
 /*
@@ -21,6 +22,9 @@ Route::group(['prefix' => 'V1'], function () {
     Route::apiResource('posts', PostController::class);
 });
 
+Route::group(['prefix' => 'V1'], function () {
+    Route::apiResource('applies', ApplyController::class);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
