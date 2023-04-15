@@ -22,7 +22,6 @@ class AuthController extends Controller
             'city' => 'required|string',
             'role' => 'required|string',
             // 'image' => 'required|st|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
             'phone' => 'required|string',
         ]);
         // check file is valid or not

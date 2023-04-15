@@ -28,9 +28,17 @@ class PostController extends Controller
     public function store(storePostRequest $request)
     {
         Post::create($request->validated());
+        // check if image is a file
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+        }
         return response()->json([
             'message' => 'Post created successfully'
         ]); 
+        
     }
 
     //update a post
