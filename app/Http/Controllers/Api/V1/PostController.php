@@ -42,9 +42,16 @@ class PostController extends Controller
     }
 
     //update a post
-    public function update(storePostRequest $request, Post $post)
+    public function update(  $request, Post $post)
     {
         $post->update($request->validated());
+        // check if image is a file
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+        }
         return response()->json([
             'message' => 'Post updated successfully'
         ]); 
