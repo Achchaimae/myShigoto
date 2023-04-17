@@ -22,13 +22,13 @@ class StoreApplyRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'post_id' => 'required',
             'FirstName' => 'required|string|max:255',
             'LastName' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
+            'phone' => 'required|string',
             'address' => 'required|string|max:255',
             'cv' => 'required|string|max:255',
-
         ];
     }
 }
