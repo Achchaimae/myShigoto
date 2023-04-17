@@ -16,4 +16,9 @@ class Post extends Model
         'city',
         'type_of_post',
     ];
+    //relate post with post apply
+    public function postApply()
+    {
+        return $this->hasMany(PostApply::class);
+    }
 }

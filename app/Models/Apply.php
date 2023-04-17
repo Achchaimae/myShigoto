@@ -16,4 +16,9 @@ class Apply extends Model
         'address',
         'cv',
     ];
+    //relate apply with post apply
+    public function postApply()
+    {
+        return $this->hasMany(PostApply::class);
+    }
 }
