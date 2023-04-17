@@ -30,11 +30,11 @@ class StorePostRequest extends FormRequest
             'type_of_post' => 'required|string',
         ];
         // check if image is a file
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images');
-            $image->move($destinationPath, $name);
-        }
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $name = time().'.'.$image->getClientOriginalExtension();
+        //     $destinationPath = public_path('/images');
+        //     $image->move($destinationPath, $name);
+        // }
     }
 }
