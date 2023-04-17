@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Apply;
+use App\Models\PostApply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApplyRequest;
@@ -21,9 +22,16 @@ class ApplyController extends Controller
     }
     public function store(StoreApplyRequest $request)
     {
-        Apply::create($request->validated());
+
+
+        $apply = Apply::create($request->validated());
+
+        PostApply::create([
+            'post_id' => $request->post_id,
+            'apply_id' => $apply->id,
+            ]);
         return response()->json([
-            'message' => 'Apply sent successfully'
+            'message' => 'Apply sent successfully dnaud'
         ]);
 
     }
