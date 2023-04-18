@@ -23,10 +23,16 @@ return new class extends Migration
             $table->string('role');
             $table->string('image')->nullable();
             $table->string('phone');
+            $table->string('document_validation')->nullable();
+            $table->string('status');
+            $table->string('validation')->default('pending');
+           
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+     
+
     }
 
     /**
