@@ -23,6 +23,7 @@ class AuthController extends Controller
             'role' => 'required|string',
             // 'image' => 'required|st|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone' => 'required|string',
+            'status' => 'required|string',
         ]);
         // check file is valid or not
         if ($request->hasFile('image')) {
@@ -89,6 +90,44 @@ class AuthController extends Controller
             return response()->json(['error'=>'Unauthorised'], 401);
         }
     }
+    //show user who have status company
+    public function showCompany(){
+        $user = User::where('status', 'company')->get();
+        $response =[
+            'success' => true,
+            'message' => 'User login successfully.',
+            'data' => $user
+        ];
+        return response()->json($response, 200);
+    }
+    //change the role of user to company
+    public function accepted(Request $request){
+        
+        $user = User::find($request->id);
+        $user->validation = 'accepted';
+        $user->role = 'company';
+        $user->save();
+        $response =[
+            'success' => true,
+            'message' => 'User login successfully.',
+            'data' => $user
+        ];
+        return response()->json($response, 200);
+    }
+    //change the role of 
+    public function rejected(Request $request){
+        
+        $user = User::find($request->id);
+        $user->validation = 'rejected';
+        $user->save();
+        $response =[
+            'success' => true,
+            'message' => 'User login successfully.',
+            'data' => $user
+        ];
+        return response()->json($response, 200);
+    }
+
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
