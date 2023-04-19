@@ -29,6 +29,7 @@ class StoreApplyRequest extends FormRequest
             'phone' => 'required|string',
             'address' => 'required|string|max:255',
             'cv' => 'required|string|max:255',
+            'status' => 'sometimes|string',
         ];
     }
 }
