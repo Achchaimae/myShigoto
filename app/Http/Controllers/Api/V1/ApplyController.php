@@ -20,6 +20,15 @@ class ApplyController extends Controller
     {
         return new  ApplyResource($apply);
     }
+    //show apply by that have a pending status
+    public function showPending()
+    {
+        $apply = Apply::where('status', 'pending')->get();
+        return response()->json([
+            'message' => 'Apply pending successfully',
+            'data' => $apply
+        ]);
+    }
     public function store(StoreApplyRequest $request)
     {
 
@@ -49,5 +58,30 @@ class ApplyController extends Controller
             'message' => 'Apply deleted successfully'
         ]);
     }
+
+   //accepte apply 
+    public function accepte($id)
+    {
+        $apply = Apply::find($id);
+        $apply->status = 'accepted';
+        $apply->save();
+        return response()->json([
+            'message' => 'Apply accepted successfully'
+        ]);
+    }
+    //reject apply
+    public function reject($id)
+    {
+        $apply = Apply::find($id);
+        $apply->status = 'rejected';
+        $apply->save();
+        return response()->json([
+            'message' => 'Apply rejected successfully'
+        ]);
+    }
+
+
+
+
     
 }
