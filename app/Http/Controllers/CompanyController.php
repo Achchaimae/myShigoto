@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     public function showCompany(){
-        $user = User::where('validation', 'accepted ' and 'status' )->get();
+        $user = User::where('validation', 'accepted')->get();
         $response =[
             'success' => true,
             'message' => 'User login successfully.',
