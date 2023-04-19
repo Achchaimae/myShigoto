@@ -28,7 +28,9 @@ class User extends Authenticatable
         'city',
         'role',
         'image',
-        'status'
+        'status',
+        'validation',
+        'document_validation',
     ];
 
     /**
