@@ -15,6 +15,7 @@ class Apply extends Model
         'phone',
         'address',
         'cv',
+        'status',
     ];
     //relate apply with post apply
     public function postApply()
