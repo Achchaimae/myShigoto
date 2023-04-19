@@ -29,6 +29,11 @@ Route::group(['prefix' => 'V1'], function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//show the apply by that have a pending status
+Route::get('showPending', [ApplyController::class, 'showPending']);
+//accept or reject the apply
+Route::put('accepte/{id}', [ApplyController::class, 'accepte']);
+Route::put('reject/{id}', [ApplyController::class, 'reject']);
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
