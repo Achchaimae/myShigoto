@@ -21,17 +21,12 @@ class AuthController extends Controller
             'address' => 'required|string',
             'city' => 'required|string',
             'role' => 'required|string',
-            // 'image' => 'required|st|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|string',
             'phone' => 'required|string',
             'status' => 'required|string',
+            'validation' => 'sometime|string',
         ]);
-        // check file is valid or not
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images');
-            $image->move($destinationPath, $name);
-        }
+        
 
         if($validator->fails()){
             $response =[
