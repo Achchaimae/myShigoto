@@ -45,11 +45,6 @@ class PostController extends Controller
     public function update(storePostRequest $request, Post $post)
     {
         $post->update($request->validated());
-        // dd($request->all());
-       // showing the request data  
-       
-        // check if image is a file
-       
         return response()->json([
             'message' => 'Post updated successfully'
          ]); 
