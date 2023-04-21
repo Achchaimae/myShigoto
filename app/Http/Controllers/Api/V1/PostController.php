@@ -58,6 +58,11 @@ class PostController extends Controller
             'message' => 'Post deleted successfully'
         ]); 
     }
+    //search for a post
+    public function search($title)
+    {
+        return Post::where('title', 'like', '%'.$title.'%')->get();
+    }
    
 
 }

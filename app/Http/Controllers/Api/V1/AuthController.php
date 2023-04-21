@@ -77,7 +77,8 @@ class AuthController extends Controller
             $response =[
                 'success' => true,
                 'message' => 'User login successfully.',
-                'data' => $succes
+                'data' => $succes,
+                'role' => $user->role
             ];
             return response()->json($response, 200);
         }
