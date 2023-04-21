@@ -31,6 +31,7 @@ class User extends Authenticatable
         'status',
         'validation',
         'document_validation',
+        'remember_token'
     ];
 
     /**
@@ -51,4 +52,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function clientCoversation()
+    {
+        return $this->hasMany(Conversation::class,'client_id','id');
+    }
+    public function ownerConversation()
+    {
+        return $this->hasMany(Conversation::class,'owner_id','id');
+    }
 }

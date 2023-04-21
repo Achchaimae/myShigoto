@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\ApplyController;
+use App\Http\Controllers\Api\V1\MessagesController;
+use App\Http\Controllers\Api\V1\ConversationController;
+use App\Http\Controllers\Api\V1\MyConversationController;
+
+
 
 
 /*
@@ -46,3 +51,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::put('rejected/{id}', 'rejected');
     Route::get('logout', 'logout');
 });
+//conversation and message
+Route::apiResource('/conversation', MyConversationController::class);
+Route::apiResource('/messages', MessagesController::class);
+

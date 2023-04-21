@@ -25,6 +25,7 @@ class AuthController extends Controller
             'phone' => 'required|string',
             'status' => 'required|string',
             'validation' => 'sometime|string',
+            'token' => 'sometimes|string',
         ]);
         
 
@@ -77,8 +78,10 @@ class AuthController extends Controller
             $response =[
                 'success' => true,
                 'message' => 'User login successfully.',
-                'data' => $succes,
-                'role' => $user->role
+                'user' => $user,
+                'token' => $user->createToken('MyApp')->plainTextToken,
+                'role' => $user->role ,
+                 'id' => $user->id
             ];
             return response()->json($response, 200);
         }
