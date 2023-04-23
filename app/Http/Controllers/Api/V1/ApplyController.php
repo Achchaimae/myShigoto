@@ -25,6 +25,8 @@ class ApplyController extends Controller
     {
         $apply = Apply::where('status', 'pending')->get();
         return response()->json([
+            //the title of the post too from the post table
+            // // 'title' => $apply->postApply->post->id,
             'message' => 'Apply pending successfully',
             'data' => $apply
         ]);
