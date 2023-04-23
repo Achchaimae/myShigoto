@@ -18,7 +18,7 @@ class Apply extends Model
         'status',
     ];
     //relate apply with post apply
-    public function postApply()
+    public function postapply()
     {
         return $this->hasMany(PostApply::class);
     }
