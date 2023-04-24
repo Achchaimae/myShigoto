@@ -127,12 +127,76 @@ class AuthController extends Controller
         return response()->json($response, 200);
     }
 
-
+    //logout
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
         $response =[
             'success' => true,
             'message' => 'User logout successfully.',
+            'data' => []
+        ];
+        return response()->json($response, 200);
+    }
+
+    //show the data of a user using id
+    public function show($id){
+        $user = User::find($id);
+        $response =[
+            'data' => $user
+        ];
+        return response()->json($response, 200);
+    }
+    //update the data of a user using id
+    public function update(Request $request){
+        $user = User::find($request->id);
+        if (!$user) {
+            $response = [
+                'success' => false,
+                'message' => 'User not found.'
+            ];
+            return response()->json($response, 404);
+        }
+    
+        // Validate input data
+        $validatedData = $request->validate([
+            'FirstName' => 'required',
+            'LastName' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+            'city' => 'required',
+            'role' => 'required',
+            'image' => 'required',
+            'phone' => 'required',
+            'status' => 'required',
+            'validation' => 'required',
+        ]);
+    
+        $user->FirstName = $validatedData['FirstName'];
+        $user->LastName = $validatedData['LastName'];
+        $user->email = $validatedData['email'];
+        $user->address = $validatedData['address'];
+        $user->city = $validatedData['city'];
+        $user->role = $validatedData['role'];
+        $user->image = $validatedData['image'];
+        $user->phone = $validatedData['phone'];
+        $user->status = $validatedData['status'];
+        $user->validation = $validatedData['validation'];
+        $user->save();
+        $response =[
+            'success' => true,
+            'message' => 'User updated successfully.',
+            'data' => $user
+        ];
+        return response()->json($response, 200);
+    }
+    
+    //delete the data of a user using id
+    public function destroy($id){
+        $user = User::find($id);
+        $user->delete();
+        $response =[
+            'success' => true,
+            'message' => 'User deleted successfully.',
             'data' => []
         ];
         return response()->json($response, 200);
