@@ -63,6 +63,20 @@ class PostController extends Controller
     {
         return Post::where('title', 'like', '%'.$title.'%')->get();
     }
+    //search by tag for a post and the tag in one input and separate them by comma
+    public function searchByTag($tag)
+   
+    {
+     
+    $tags = explode(',', $tag);
+    $posts = Post::where(function ($query) use ($tags) {
+        foreach ($tags as $tag) {
+            $query->orWhere('tag', 'like', '%'.$tag.'%');
+        }
+    })->get();
+    return $posts;
+    }
+    
    
 
 }
