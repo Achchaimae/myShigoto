@@ -46,6 +46,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('login', 'login');
     Route::get('showCompany', 'showCompany');
+    Route::get('show/{id}', 'show');
+   //update user
+    Route::put('update/{id}', 'update');
     //change role
     Route::put('accepted/{id}', 'accepted');
     Route::put('rejected/{id}', 'rejected');
