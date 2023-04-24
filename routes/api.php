@@ -26,6 +26,8 @@ use App\Http\Controllers\Api\V1\MyConversationController;
 Route::group(['prefix' => 'V1'], function () {
     Route::apiResource('posts', PostController::class);
     Route::get('posts/search/{title}', [PostController::class, 'search']);
+    // show the post by tag
+    Route::get('posts/tag/{tag}', [PostController::class, 'searchByTag']);
 });
 
 Route::group(['prefix' => 'V1'], function () {
