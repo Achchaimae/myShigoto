@@ -10,6 +10,13 @@ use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {  
+    //show all the posts where the user is the owner
+    public function myPosts(Request $request)
+    {
+        // $user = auth()->user();
+        
+        return response(Post::where('user_id', $request->user_id)->get());
+    }
     //show all the posts
     public function index()
     {
@@ -58,7 +65,7 @@ class PostController extends Controller
             'message' => 'Post deleted successfully'
         ]); 
     }
-    //search for a post
+    //search by title
     public function search($title)
     {
         return Post::where('title', 'like', '%'.$title.'%')->get();
