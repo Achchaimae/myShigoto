@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Conversation::class,'owner_id','id');
     }
+    //has many post the name of the function is posts
+    public function posts()
+    {
+        return $this->hasMany(Post::class , 'user_id','id');
+    }
 }

@@ -15,10 +15,14 @@ class Post extends Model
         'tag',
         'city',
         'type_of_post',
+        'user_id'
     ];
     //relate post with post apply
     public function postApply()
     {
         return $this->hasMany(PostApply::class);
+    }
+    public function User(){
+        return $this->belongsTo(User::class , 'user_id');
     }
 }
