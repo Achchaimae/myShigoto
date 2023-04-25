@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tag');
             $table->string('city');
             $table->string('type_of_post');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
