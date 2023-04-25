@@ -28,13 +28,8 @@ class StorePostRequest extends FormRequest
             'tag' => 'required|string',
             'city' => 'required|string',
             'type_of_post' => 'required|string',
+            'user_id' => 'required|integer'
         ];
-        // check if image is a file
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $name = time().'.'.$image->getClientOriginalExtension();
-        //     $destinationPath = public_path('/images');
-        //     $image->move($destinationPath, $name);
-        // }
+        
     }
 }
